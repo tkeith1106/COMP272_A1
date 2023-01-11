@@ -1,49 +1,65 @@
 public class Queue {
-    private int[] array;
-    private int top = -1;
+    // init variables
+    Node head, tail;
+    int size = 0;
 
+    // default constructor
     public Queue() {
-        this.array = new int[10];
+        this.head = this.tail = null;
     }
 
-    public Queue(int size) {
-        this.array = new int[size];
-    }
+    // this add method adds the new method into the queue and is a 0(1) for time complexity
+    public void add(int data) {
 
-    public void push(int item) {
-        if ((this.top+1) == this.array.length) resize();
-        this.array[this.top+1] = item;
-        this.top++;
+        // init the node
+        Node temp = new Node(data);
 
-    }
-
-    public int pop() {
-        if (top == -1) throw new IndexOutOfBoundsException("There are currently no items in the Queue");
-        int x = this.array[0];
-        for (int i = 0; i<this.top; i++) {
-            this.array[i] = this.array[i+1];
+        // set tail and head to new node if tail is null
+        if (this.tail == null) {
+            this.head = this.tail = temp;
         }
-        this.array[this.top] = 0;
-        this.top--;
-        if ((this.top)<(this.array.length/3)) resize();
-        return x;
+        // else move the pointer around for new node
+        else {
+            this.tail.next = temp;
+            this.tail = temp;
+        }
+        // increment the size of the queue
+        this.size++;
+
     }
 
-    private void resize() {
-        if ((this.top+1) == this.array.length) {
-            int[] a = this.array;
-            int[] b = new int[(this.top+1) * 2];
-            for (int i=0; i<a.length;i++) {
-                b[i] = a[i];
-            }
-            this.array = b;
-        } else if ((this.top)<(this.array.length/3) && this.top != -1) {
-            int[] a = this.array;
-            int[] b = new int[(this.top) * 2];
-            for (int i=0; i<this.top+1;i++) {
-                b[i] = a[i];
-            }
-            this.array = b;
-        }
+    public int size() {
+        return this.size;
     }
+
+    //time complexity of O(n)
+    public int deleteMin() {
+
+        if (this.head == null) throw new IllegalStateException("You Cannot Delete Nodes From An Empty Queue!");
+        // create node variables to compare nodes to
+        Node current = this.head;
+        Node prev = null;
+
+        // set a high range value to start comparisons with
+        int min = Integer.MAX_VALUE;
+        Node minNode = null;
+        while (current != null) {
+            // if data is less than min variable set the min node and prev variables
+            if (current.data < min) {
+                min = current.data;
+                minNode = current;
+                prev = current;
+            }
+            current = current.next;
+        }
+        if (prev == null) {
+            this.head = head.next;
+        } else {
+            prev.next = minNode.next;
+        }
+
+        this.size--;
+        return min;
+    }
+
 }
