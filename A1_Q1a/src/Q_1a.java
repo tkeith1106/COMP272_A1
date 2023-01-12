@@ -66,8 +66,9 @@ public class Q_1a {
         String userStrInput;
 
 
+        // do-while loop to allow user to play around with node counts
         do {
-            // test the add method() by adding nodes
+            // test the add method() by adding nodes and timing them from start to finish
             Queue testQ = new Queue();
             long startTime = System.nanoTime();
             for (int i=0; i<addAmount; i++) {
@@ -82,6 +83,7 @@ public class Q_1a {
                     addAmount,
                     testQ.size());
 
+            // tests the deleteMin() method by timing the removal of each smallest number from start to finish
             startTime = System.nanoTime();
             for (int i=0; i<addAmount; i++) {
                 testQ.deleteMin();
@@ -95,8 +97,8 @@ public class Q_1a {
                     testQ.size());
 
 
+            // see if user would like to try more or less node count
             userStrInput = tryAgain(input);
-
             if (userStrInput.equalsIgnoreCase("no")) redo = 0;
             else {
                 addAmount = chooseInt(input);
