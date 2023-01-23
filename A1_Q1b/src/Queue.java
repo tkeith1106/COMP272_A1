@@ -29,9 +29,9 @@ public class Queue {
     }
 
     public int dequeue() {
-        //check to make sure there isnt any empty queue
+        //check to make sure there isn't any empty queue
         if (this.head == null) {
-            throw new IllegalStateException("Queue is empty");
+            throw new IllegalStateException("Queue is already empty");
         }
         // store data to return removed nodes data
         int x = this.head.data;

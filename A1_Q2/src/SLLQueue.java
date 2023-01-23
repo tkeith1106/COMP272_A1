@@ -1,6 +1,6 @@
 public class SLLQueue {
     // init variables
-    Node head, tail;
+    SLLNode head, tail;
     int size = 0;
 
     // default constructor
@@ -12,7 +12,7 @@ public class SLLQueue {
     public void enqueue(int data) {
 
         // init the node
-        Node temp = new Node(data);
+        SLLNode temp = new SLLNode(data);
 
         // set tail and head to new node if tail is null
         if (this.tail == null) {
@@ -54,14 +54,14 @@ public class SLLQueue {
         if (n1 == n2) throw new IllegalArgumentException("Cannot Swap Nodes of the Same Value");
 
         // Search for n1 node
-        Node prevN1 = null, currentN1 = head;
+        SLLNode prevN1 = null, currentN1 = head;
         while (currentN1 != null && currentN1.data != n1) {
             prevN1 = currentN1;
             currentN1 = currentN1.next;
         }
 
         // Search for n2 node
-        Node prevN2 = null, currentN2 = head;
+        SLLNode prevN2 = null, currentN2 = head;
         while (currentN2 != null && currentN2.data != n2) {
             prevN2 = currentN2;
             currentN2 = currentN2.next;
@@ -83,14 +83,14 @@ public class SLLQueue {
             head = currentN1;
 
         // Swap other pointers
-        Node temp = currentN1.next;
+        SLLNode temp = currentN1.next;
         currentN1.next = currentN2.next;
         currentN2.next = temp;
 
     }
     public void printQueue() {
         // set current node to head
-        Node current = this.head;
+        SLLNode current = this.head;
         //print opening bracket
         System.out.print("[");
         // print values
