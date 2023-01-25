@@ -61,6 +61,7 @@ public class Q2 {
 
     public static void DLLDemo() {
 
+        // init queue object
         DLLQueue testQ = new DLLQueue();
 
         System.out.println("DLL Demo:");
@@ -78,7 +79,9 @@ public class Q2 {
         System.out.print("Current Queue State:................. ");
         testQ.printQueue();
 
+        // try & catch block
         try {
+            // swap and print static values in queue
             System.out.print("Swapping Adjacent Value with index 0: ");
             testQ.swap(0);
             testQ.printQueue();
@@ -94,7 +97,9 @@ public class Q2 {
             System.out.print("Swapping Adjacent Value with index 7: ");
             testQ.swap(7);
             testQ.printQueue();
-        } catch (IllegalArgumentException e) {
+        }
+        // catch bad index values
+        catch (IllegalArgumentException e) {
             System.out.println("ERROR: You Have Input An Index Value That Cannot Be Swapped!");
         }
     }

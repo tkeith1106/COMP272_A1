@@ -8,6 +8,7 @@ public class DLLQueue {
     }
 
 
+    // O(1) time complexity
     public DLLNode add(int data) {
         DLLNode newNode = new DLLNode(data);
         if (this.head==null) {
@@ -24,6 +25,7 @@ public class DLLQueue {
         return newNode;
     }
 
+    // O(n) time complexity
     public int remove(int index) {
         DLLNode removeNode = getNode(index);
         int removedData = removeNode.data;
@@ -43,6 +45,7 @@ public class DLLQueue {
         return removedData;
     }
 
+    // O(n) time complexity
     public void swap(int index) {
 
         // init current variable
@@ -97,6 +100,7 @@ public class DLLQueue {
     }
 
     // set node a specific index
+    // O(n) time complexity
     public int set(int data, int index) {
         if (index < 0 || index > (this.size-1)) throw new IndexOutOfBoundsException();
         DLLNode temp = getNode(index);
@@ -106,12 +110,14 @@ public class DLLQueue {
     }
 
     // get node at index position
+    // O(n) time complexity
     public DLLNode get(int index) {
         if (index < 0 || index > (this.size-1)) throw new IndexOutOfBoundsException();
         return getNode(index);
     }
 
     // loop list to specific find node prev and next
+    // O(n) time complexity
     private DLLNode getNode(int index) {
         DLLNode temp;
         if (index < (this.size / 2)) {
